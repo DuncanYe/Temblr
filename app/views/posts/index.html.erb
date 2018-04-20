@@ -5,9 +5,14 @@
   <% @posts.each do |post| %>
     <h2 class="title"><%= link_to post.title, post %></h2> 
     <p class="body"><%= truncate(post.body, length:100) %></p>
-    <p class="date"><%= time_ago_in_words(post.created_at) %></p>
+    <p class="date"><%= time_ago_in_words(post.created_at) %> |
+    <%= link_to 'Trash it', post_path(post), method: :delete, data: { confirm: "Are you sure?"} %>
+  </p>
 
   <% end %>
 </div>
 
-<%= link_to 'New Post', new_post_path %>
+
+<br>
+
+<h2><%= link_to 'New Post', new_post_path %></h2>

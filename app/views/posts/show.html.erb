@@ -4,10 +4,15 @@
 
 
 <p class="date">
-  Submit<%= time_ago_in_words(@post.created_at) %>ago
+  Submit<%= time_ago_in_words(@post.created_at) %>ago |
+  <%= link_to 'Fix Post', edit_post_path(@post) %> 
 </p>
 
 <p class="body">
   Body:<%= @post.body %>
 </p>
 
+
+<br>
+
+<%= link_to 'Back to Temblr', posts_path  %>
