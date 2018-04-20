@@ -1,5 +1,13 @@
 <h1>Make something</h1>
 
+<% if @post.errors.any? %>
+  <ul>
+    <% @post.errors.full_messages.each do |mas| %>
+      <li><%= mas %></li>
+    <% end %>
+  </ul>
+<% end %>
+
 <%= form_for @post do |f| %>
 
   <p>
