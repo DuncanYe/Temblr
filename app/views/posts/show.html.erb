@@ -1,18 +1,57 @@
-<h1 class="title">
-  <%= @post.title %>
-</h1>
+<div class="container">
+  <div class="row">
 
+    <h1><%= link_to 'Back to Temblr', posts_path  %>沒裝bootsrap 所以col沒效</h1>
 
-<p class="date">
-  Submit<%= time_ago_in_words(@post.created_at) %>ago |
-  <%= link_to 'Fix Post', edit_post_path(@post) %> 
-</p>
+    <div class="col-md-7">
+      <h1 class="title">
+        <%= @post.title %>
+      </h1>
 
-<p class="body">
-  Body:<%= @post.body %>
-</p>
+      <p class="date">
+        Submit<%= time_ago_in_words(@post.created_at) %>ago |
+        <%= link_to 'Fix Post', edit_post_path(@post) %> 
+      </p>
 
+      <p class="body">
+        Body:<%= @post.body %>
+      </p>
+    </div>
 
-<br>
+    <div class="col-md-5">
 
-<%= link_to 'Back to Temblr', posts_path  %>
+      <div class="comment-content">
+        <h2><%= @post.comments.count %> comment</h2>
+        <!-- 問題！ 把count放進底會失敗 -->
+        <% @post.comments.each do |c|%>
+          <p><%= c.name %></p>
+          <p><%= c.body %></p>
+          <p><%= time_ago_in_words(c.created_at) %></p>
+          <p><%= link_to 'Trash comment', post_comment_path(@post, c), method: :delete, data: { confirm: 'Are you sure?'} %>
+          <hr>
+        <% end %>
+      </div>
+
+      <br>
+
+      <div class="comments">
+        <h3>Join Discussion: </h3>
+        <%= form_for [@post, @comment] do |f| %>
+          <p>
+            <%= f.label :name %>
+            <%= f.text_field :name, placeholder: " what's your name" %>
+          </p>
+          <p>
+            <%= f.label :body %>
+            <%= f.text_area :body, placeholder: 'write it' %>
+          </p>
+          <p>
+            <%= f.submit %>
+          </p>
+        <% end %>
+      </div>
+    </div>
+
+  </div>
+</div>
+
