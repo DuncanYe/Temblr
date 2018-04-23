@@ -9,7 +9,13 @@
   </head>
 
   <body>
-
+    <div class="col-md-3"> 
+      <%= link_to 'Tumblr', posts_path %> |
+      <%= link_to 'About Us', about_path %>
+    </div>
+    <div class="col-md-9">
+      <%= link_to 'New post', new_post_path %>
+    </div>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
 
