@@ -14,7 +14,9 @@
       <%= link_to 'About Us', about_path %>
     </div>
     <div class="col-md-9">
+      <% if user_signed_in? %>
       <%= link_to 'New post', new_post_path %>
+      <% end %>
     </div>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
