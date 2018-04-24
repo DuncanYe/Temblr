@@ -22,41 +22,16 @@
     <div class="col-md-5">
 
       <div class="comment-content">
-        <h2>Now have <%= @post.comments.count %> comment</h2>
-        <hr>
-        <!-- 問題！ 把count放進底會失敗 -->
-        <% @post.comments.each do |c|%>
-          <p><strong><%= c.name %></strong> <em>Create <%= time_ago_in_words(c.created_at) %> ago</em></p>
-          <p class="pull-right"><%= link_to 'Trash comment', post_comment_path(@post, c), method: :delete, data: { confirm: 'Are you sure?'} %>
-            <!-- 應該不能放Trash comment，沒有設定user擁有commnt，變成大家都能刪除。 --></p>
-          <p><%= c.body %></p>
-          
-          <br>
-          <hr>
-        <% end %>
+        <%= render partial: 'comments/comment', locals: { post: @post} %>
       </div>
 
       <br>
 
       <div class="comments">
         <h3>Join Discussion: </h3>
-
-        <div class="form">
-          <%= form_for [@post, @comment] do |f| %>
-            <div class="form-group">
-              <%= f.label :name %>
-              <%= f.text_field :name, placeholder: " what's your name", class: 'form-control' %>
-            </div>         
-            </div>
-              <%= f.label :body %>
-              <%= f.text_area :body, placeholder: 'What do you thing?', class: 'form-control' %>
-            <div class="form-group">
-            <br>
-              <%= f.submit class: 'btn btn-primary' %>
-          <% end %>
-        </div>
-
+        <%= render partial: 'comments/form', locals: { post: @post, comment: @comment } %>
       </div>
+
     </div>
 
   </div>

@@ -1,0 +1,12 @@
+<h2>Now have <%= post.comments.count %> comment</h2>
+<!-- 問題！ 把count放進底下會失敗 -->
+<hr>
+<% post.comments.each do |c|%>
+  <p><strong><%= c.name %></strong> <em>Create <%= time_ago_in_words(c.created_at) %> ago</em></p>
+  <p class="pull-right"><%= link_to 'Trash comment', post_comment_path(@post, c), method: :delete, data: { confirm: 'Are you sure?'} %>
+    <!-- 應該不能放Trash comment，沒有設定user擁有commnt，變成大家都能刪除。 --></p>
+  <p><%= c.body %></p>
+  
+  <br>
+  <hr>
+<% end %>
