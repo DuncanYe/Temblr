@@ -1,15 +1,18 @@
-<h1>Tumble index</h1>
+<div class="container">
+  <div class="row">
 
-<div class="post_wrapper">
-  
-  <% @posts.each do |post| %>
-    <h2 class="title"><%= link_to post.title, post %></h2> 
-    <p class="body"><%= truncate(post.body, length:100) %></p>
-    <p class="date"><%= time_ago_in_words(post.created_at) %></p>
-
-  <% end %>
+    <div class="post_wrapper">
+      <% @posts.each do |post| %>
+        <h2 class="title"><%= link_to post.title, post %></h2>
+        <p><%= link_to post_path(post) do %></p>
+           <%= image_tag post.image, width: '700px' %>
+           <% end %>
+        <p class="body"><%= truncate(post.body, length:100) %></p>
+        <p class="date"><%= time_ago_in_words(post.created_at) %></p>
+        <hr>
+      <% end %>
+    </div>
+  </div>
 </div>
 
-
-<br>
 

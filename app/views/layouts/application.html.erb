@@ -9,7 +9,7 @@
   </head>
 
   <body>
-    <div class="col-md-3"> 
+    <div class="col-md-3 side-bar"> 
       <%= link_to 'Tumblr', posts_path %> |
       <%= link_to 'About Us', about_path %> |
       <% if user_signed_in? %>
@@ -19,9 +19,9 @@
         <%= link_to '註冊', new_user_registration_path %>
       <% end %>
     </div>
-    <div class="col-md-9">
+    <div class="col-md-9 nav-bar ">
       <% if user_signed_in? %>
-      <%= link_to 'Make post', new_post_path %>
+        <%= link_to 'Make post', new_post_path %>
       <% end %>
     </div>
     <p class="notice"><%= notice %></p>
