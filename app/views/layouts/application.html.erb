@@ -9,6 +9,25 @@
   </head>
 
   <body>
+    <nav class="navbar navbar-inverse">
+      
+      <%= link_to 'Tumblr', posts_path, class: "navbar-brand" %> 
+      <div class="col-md-3 side-bar pull-right"> 
+        <% if user_signed_in? %>
+          <%= link_to 'Make post', new_post_path %> |
+        <% end %>
+        <%= link_to 'About Us', about_path %> |
+        <% if user_signed_in? %>
+          <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+        <% else %>
+          <%= link_to 'Login', user_session_path %> |
+          <%= link_to '註冊', new_user_registration_path %>
+        <% end %>
+      <!-- </div>
+      <div class="col-md-9 nav-bar "> -->
+      </div>
+
+    </nav>
 
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>

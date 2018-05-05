@@ -6,8 +6,7 @@
   </ul>
 <% end %>
 
-<%= form_for @post do |f| %>
-
+<%= form_for post do |f| %>
   <p>
     <%= f.label :title %>
     <%= f.text_field :title %><br />
@@ -15,9 +14,15 @@
   
   <p>
     <%= f.label :body %>
-    <%= f.text_field :body %>
+    <%= f.text_area :body %>
+  </p>
+
+  <p>
+    <%= f.label :image %>
+    <%= image_tag @post.image, width: '300px' if @post.image? %>
+    <%= f.file_field :image %>
   </p>
 
   <%= f.submit %>
-  
 <% end %>
+
